@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-6nt8^3h0u5+&&cswe-2=yam9bm!-qe7+353$tdcxuvntf1!0!d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['myportfolio-5ce5.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -89,57 +90,33 @@ from pathlib import Path
 from decouple import config  # type: ignore
 # if you're using python-decouple
 
-import environ
-
-env = environ.Env()
-environ.Env.read_env()  # reads the .env file
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': env('DB_NAME'),
-#         'USER': env('DB_USER'),
-#         'PASSWORD': env('DB_PASSWORD'),
-#         'HOST': env('DB_HOST', default='localhost'),
-#         'PORT': env('DB_PORT', default='5432'),
-#     }
-# }
-
-# import dj_database_url
-# import os
-
-# DATABASES = {
-#     'default': dj_database_url.config(
-        
-#     )
-# }
-import os
-import dj_database_url
-
-if os.environ.get('RENDER') == 'true':
-    # On Render
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL')
-        )
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='5432'),
     }
-else:
-    # Local development DB
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'your_local_db',
-            'USER': 'your_local_user',
-            'PASSWORD': 'your_local_password',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
+}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myportfolio_db_3rh6',
+        'USER': 'myportfolio_db_3rh6_user',
+        'PASSWORD': 'cHtePKLTLd2nJbdVVXsAX5kKxFsFAkM8',
+        'HOST': 'dpg-d0ohuvfdiees739d6o30-a.oregon-postgres.render.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
+}
+
 
 
 import os
-from pathlib import Path
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
