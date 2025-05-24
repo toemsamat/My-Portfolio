@@ -1,0 +1,8 @@
+# requirements-dev.txt
+jupyter
+ipykernel
+notebook
+jupyterlab
+django-browser-reload
+django-livereload-server
+...
