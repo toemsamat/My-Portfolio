@@ -38,9 +38,6 @@
                 target="_blank">
                 <i class="{{ profile.linkedin_icon }}  fs-3"></i>
             </a>
-            {% comment %} <a href="{{ profile.linkedin }}" class="btn btn-sm text-white" style="background-color: {{ profile.linkedin_color }};" target="_blank">
-                <i class="{{ profile.linkedin_icon }} me-1"></i> LinkedIn
-            </a> {% endcomment %}
             {% endif %}
             
             {% if profile.twitter %}
@@ -50,9 +47,6 @@
                 target="_blank">
                 <i class="{{ profile.twitter_icon }}  fs-3"></i>
             </a>
-            {% comment %} <a href="{{ profile.twitter }}" class="btn btn-sm text-white" style="background-color: {{ profile.twitter_color }};" target="_blank">
-                <i class="{{ profile.twitter_icon }} me-1"></i> Twitter
-            </a> {% endcomment %}
             {% endif %}
             
             {% if profile.instagram %}
@@ -62,9 +56,6 @@
                 target="_blank">
                 <i class="{{ profile.instagram_icon }}  fs-3"></i>
             </a>
-            {% comment %} <a href="{{ profile.instagram }}" class="btn btn-sm text-white" style="background-color: {{ profile.instagram_color }};" target="_blank">
-                <i class="{{ profile.instagram_icon }} me-1"></i> Instagram
-            </a> {% endcomment %}
             {% endif %}
             
             {% if profile.facebook %}
@@ -74,9 +65,6 @@
                 target="_blank">
                 <i class="{{ profile.facebook_icon }}  fs-3"></i>
             </a>
-            {% comment %} <a href="{{ profile.facebook }}" class="btn btn-sm text-white" style="background-color: {{ profile.facebook_color }};" target="_blank">
-                <i class="{{ profile.facebook_icon }} me-1"></i> Facebook
-            </a> {% endcomment %}
             {% endif %}
         </div>
 
@@ -85,39 +73,7 @@
 
 <hr>
 
-<!-- Skills -->
-{% comment %} <section data-aos="fade-up">
-    <h3 class="mb-4">Skills</h3>
-    <div class="container">
-        <div class="row">
-            {% for skill in skills %}
-            <div class="col-md-6 mb-4">
-                <div class="d-flex align-items-center p-3 skill-box shadow mb-5 rounded w-75">
-                    {% if skill.icon_class %}
-                        <i class="{{ skill.icon_class }} fa-2x me-3" style="color: {{ skill.icon_color }};"></i>
-                    {% else %}
-                        <i class="fas fa-tools fa-2x me-3 text-secondary"></i>
-                    {% endif %}
-                    <div class="w-100">
-                        <div class="d-flex justify-content-between">
-                            <strong>{{ skill.name }}</strong>
-                            <span>{{ skill.percentage }}%</span>
-                        </div>
-                        <small class="text-muted">{{ skill.level }}</small>
-                        <div class="progress mt-1" style="height: 6px;">
-                            <div class="progress-bar bg-primary" role="progressbar"
-                                 style="width: {{ skill.percentage }}%;"
-                                 aria-valuenow="{{ skill.percentage }}"
-                                 aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section> {% endcomment %}
+<!-- Skills Section -->
 
 <section data-aos="fade-up">
     <h3 class="mb-4">Skills</h3>
