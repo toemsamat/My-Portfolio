@@ -16,8 +16,11 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'my-portfolio-nd1f.onrender.com',
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -60,9 +63,19 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
-DATABASES = {
+if os.environ.get('RENDER') == 'true':
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
+else:
+    DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
