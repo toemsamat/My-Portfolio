@@ -71,7 +71,12 @@ class Project(models.Model):
     tech_stack = models.CharField(max_length=255)
     featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-
+class Certificate(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='certificates/', blank=True, null=True)
+    def __str__(self):
+        return self.title
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()

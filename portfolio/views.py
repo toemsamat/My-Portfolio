@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.shortcuts import render, get_object_or_404
-from .models import Profile, Skill, Experience, Project, BlogPost,ContactMessage
+from .models import Certificate, Profile, Skill, Experience, Project, BlogPost,ContactMessage
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.shortcuts import render
@@ -34,6 +34,9 @@ def projects(request):
 def resume(request):
     profile = Profile.objects.first()
     return render(request, 'portfolio/resume.html', {'profile': profile})
+def certificate(request):
+    certificates = Certificate.objects.all()
+    return render(request, 'portfolio/certificate.html', {'certificates': certificates,})
 
 def blog_list(request):
     posts = BlogPost.objects.all().order_by('-created_at')

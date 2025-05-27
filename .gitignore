@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+# Compiled Python files
+migrations/
 
 # Environment variables files
 .env
