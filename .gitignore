@@ -31,3 +31,6 @@ staticfiles/
 
 # Node.js modules (if used for frontend assets)
 node_modules/
+
+fixtures/
+#json files
