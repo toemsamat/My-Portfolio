@@ -1,9 +1,7 @@
-from django.shortcuts import redirect, render
-from django.shortcuts import render, get_object_or_404
-from .models import Certificate, Profile, Skill, Experience, Project, BlogPost,ContactMessage
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Certificate, Profile, Skill, Experience, Project, BlogPost, ContactMessage
 from django.core.mail import EmailMessage
 from django.conf import settings
-from django.shortcuts import render
 
 def home(request):
     profile = Profile.objects.first()
@@ -14,7 +12,6 @@ def about(request):
     profile = Profile.objects.first()
     experiences = Experience.objects.all()
 
-    # Group skills into categories
     frontend_skills = Skill.objects.filter(category='Frontend')
     backend_skills = Skill.objects.filter(category='Backend')
     other_skills = Skill.objects.filter(category='Other')
@@ -34,9 +31,10 @@ def projects(request):
 def resume(request):
     profile = Profile.objects.first()
     return render(request, 'portfolio/resume.html', {'profile': profile})
+
 def certificate(request):
     certificates = Certificate.objects.all()
-    return render(request, 'portfolio/certificate.html', {'certificates': certificates,})
+    return render(request, 'portfolio/certificate.html', {'certificates': certificates})
 
 def blog_list(request):
     posts = BlogPost.objects.all().order_by('-created_at')
@@ -45,9 +43,6 @@ def blog_list(request):
 def blog_detail(request, slug):
     post = get_object_or_404(BlogPost, slug=slug)
     return render(request, 'portfolio/blog_detail.html', {'post': post})
-
-def contact(request):
-    return render(request, 'portfolio/contact.html')
 
 def contact(request):
     if request.method == 'POST':
@@ -72,7 +67,7 @@ def contact(request):
                 body=full_message,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 to=[settings.CONTACT_EMAIL],
-                reply_to=[email] 
+                reply_to=[email]
             )
             email_msg.send(fail_silently=False)
 
@@ -85,6 +80,3 @@ def contact(request):
         })
 
     return render(request, 'portfolio/contact.html')
-
-
-# Create your views here.
