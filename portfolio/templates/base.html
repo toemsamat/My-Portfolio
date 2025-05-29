@@ -86,8 +86,9 @@
                     <i class="fas fa-moon"></i> Toggle Theme
                 </button> {% endcomment %}
                 <button id="theme-toggle" class="ms-2">
-                    <div class="content">
-                        <i class="fas fa-moon"></i> Toggle Theme
+                    <div class="content flex justify-center align-items-center">
+                        <i id="theme-icon" class="fas fa-moon"></i> 
+                        <div id="themeText" class="ps-2">Light Mode</div>
                     </div>
                 </button>
             </div>
@@ -123,32 +124,11 @@
 
 
     <!-- Scripts -->
+    <script src="{% static 'js/dark_mode.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-    </script>
-
-    <!-- Theme Toggle Script -->
-    <script>
-        const toggleBtn = document.getElementById('theme-toggle');
-        const darkStyle = document.getElementById('dark-style');
-
-        // Load saved theme preference
-        if (localStorage.getItem('theme') === 'dark') {
-            darkStyle.removeAttribute('disabled');
-        }
-
-        toggleBtn.addEventListener('click', () => {
-            const isDark = !darkStyle.disabled;
-            if (isDark) {
-                darkStyle.setAttribute('disabled', true);
-                localStorage.setItem('theme', 'light');
-            } else {
-                darkStyle.removeAttribute('disabled');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
     </script>
 </body>
 </html>
