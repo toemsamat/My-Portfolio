@@ -14,7 +14,7 @@
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ cert.title }}</h5>
-                    <p class="card-text">{{ cert.description }}</p>
+                    <p class="card-text">{{ cert.description|truncatewords:20}}</p>
                     {% if cert.image %}
                         <a href="{{ cert.image.url }}" target="_blank" class="btn btn-sm btn-dark">View Certificate</a>
                     {% endif %}
