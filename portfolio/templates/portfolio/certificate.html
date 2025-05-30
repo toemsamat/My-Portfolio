@@ -9,20 +9,55 @@
     {% for cert in certificates %}
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
             <div class="card h-100 shadow-sm">
+                
                 {% if cert.image %}
                     <img src="{{ cert.image.url }}" class="card-img-top" alt="{{ cert.title }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/600x400?text=No+Image" class="card-img-top" alt="No image available">
                 {% endif %}
+
                 <div class="card-body">
                     <h5 class="card-title">{{ cert.title }}</h5>
-                    <p class="card-text">{{ cert.description|truncatewords:20}}</p>
+
+                    <!-- Description with toggle -->
+                    <p class="card-text" id="desc-{{ cert.id }}">
+                        {{ cert.description|truncatewords:20 }}...
+                    </p>
+                    <a href="javascript:void(0);" 
+                       onclick="toggleDescription(this)" 
+                       data-id="{{ cert.id }}" 
+                       data-full="{{ cert.description|escapejs }}" 
+                       data-short="{{ cert.description|truncatewords:20|escapejs }}" 
+                       class="text-primary d-block mb-2">
+                       Read more
+                    </a>
+
                     {% if cert.image %}
-                        <a href="{{ cert.image.url }}" target="_blank" class="btn btn-sm btn-dark">View Certificate</a>
+                        <div class="text-end">
+                            <a href="{{ cert.image.url }}" target="_blank" class="btn btn-sm btn-dark">View Certificate</a>
+                        </div>
                     {% endif %}
                 </div>
             </div>
         </div>
     {% empty %}
-        <p>No certificates available.</p>
+        <div class="col-12 text-center">
+            <p class="text-muted">No certificates available at the moment.</p>
+        </div>
     {% endfor %}
 </div>
+
+<!-- Toggle Description Script -->
+<script>
+function toggleDescription(el) {
+    const id = el.getAttribute('data-id');
+    const descEl = document.getElementById('desc-' + id);
+    const isExpanded = el.textContent.trim() === 'Read less';
+    const shortText = el.getAttribute('data-short');
+    const fullText = el.getAttribute('data-full');
+
+    descEl.innerHTML = isExpanded ? shortText + '...' : fullText.replace(/\n/g, '<br>');
+    el.textContent = isExpanded ? 'Read more' : 'Read less';
+}
+</script>
 {% endblock %}
