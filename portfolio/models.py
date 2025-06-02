@@ -55,15 +55,15 @@ class Experience(models.Model):
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField()
 
-class Certificate(models.Model):
-    title = models.CharField(max_length=200)
-    issuer = models.CharField(max_length=200, null=True, blank=True)
-    issue_date = models.DateField(null=True, blank=True)
-    description = models.TextField(blank=True)
-    image = CloudinaryField('image', folder='certificates/', null=True, blank=True)
+# class Certificate(models.Model):
+#     title = models.CharField(max_length=200)
+#     issuer = models.CharField(max_length=200, null=True, blank=True)
+#     issue_date = models.DateField(null=True, blank=True)
+#     description = models.TextField(blank=True)
+#     image = CloudinaryField('image', folder='certificates/', null=True, blank=True)
 
-    def __str__(self):
-        return f"{self.title} by {self.issuer}"
+#     def __str__(self):
+#         return f"{self.title} by {self.issuer}"
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
