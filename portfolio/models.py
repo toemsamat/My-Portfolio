@@ -69,8 +69,8 @@ class Project(models.Model):
 
 class Certificate(models.Model):
     title = models.CharField(max_length=200)
-    issuer = models.CharField(max_length=200)
-    issue_date = models.DateField()
+    # issuer = models.CharField(max_length=200)
+    # issue_date = models.DateField()
     description = models.TextField(blank=True)
     image = CloudinaryField('image', folder='certificates/', blank=True, null=True)
 
