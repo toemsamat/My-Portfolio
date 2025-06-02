@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Certificate, Profile, Skill, Experience, Project, BlogPost, ContactMessage
+from .models import  Certificate, Profile, Skill, Experience, Project, BlogPost, ContactMessage
 from django.core.mail import EmailMessage
 from django.conf import settings
 

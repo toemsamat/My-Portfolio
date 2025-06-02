@@ -55,6 +55,15 @@ class Experience(models.Model):
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField()
 
+class Certificate(models.Model):
+    title = models.CharField(max_length=200)
+    issuer = models.CharField(max_length=200, null=True, blank=True)
+    issue_date = models.DateField(null=True, blank=True)
+    description = models.TextField(blank=True)
+    image = CloudinaryField('image', folder='certificates/', null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.title} by {self.issuer}"
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
@@ -65,18 +74,6 @@ class Project(models.Model):
     tech_stack = models.CharField(max_length=255)
     featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-
-
-class Certificate(models.Model):
-    title = models.CharField(max_length=200)
-    # issuer = models.CharField(max_length=200)
-    # issue_date = models.DateField()
-    description = models.TextField(blank=True)
-    image = CloudinaryField('image', folder='certificates/', blank=True, null=True)
-
-    def __str__(self):
-        return self.title
-
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
